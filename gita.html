@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BHAGVAT GITA</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="chatbot-container">
+      <div class="chatbot-header">
+        <img src="UC.JPG.webp" alt="Krishna">
+        <h1>Krishna</h1>
+        
+        
+      </div>
+      <div class="chatbot-dialogue">
+        <div class="chatbot-message">
+          <p>Hello, I am Krishna. How may I assist you today?</p>
+        </div>
+      </div>
+      <div class="chatbot-footer">
+        <input type="text" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script>
+      function sendMessage() {
+  // Get the input field and user message
+  const inputField = document.querySelector("input[type='text']");
+  const userMessage = inputField.value.toLowerCase();
+  
+  // Clear the input field
+  inputField.value = "";
+
+  // Create a new user message element and append it to the chatbot dialogue
+  const chatbotDialogue = document.querySelector(".chatbot-dialogue");
+  const newMessage = document.createElement("div");
+  newMessage.classList.add("user-message");
+  newMessage.innerHTML = `<p>${userMessage}</p>`;
+  chatbotDialogue.appendChild(newMessage);
+
+  // Determine the chatbot response based on the user message
+  let chatbotResponse;
+  switch (userMessage) {
+    case "hi":
+    case "hello":
+      chatbotResponse = "Hello! How can I help you?";
+      break;
+
+
+      case "what is bhagavad gita?":
+            chatbotResponse = "The Bhagavad Gita is a 700-verse Hindu scripture that is part of the ancient Indian epic Mahabharata. It is a dialogue between the Pandava prince Arjuna and his guide and charioteer Lord Krishna.";
+            break;
+          case "who is krishna?":
+            chatbotResponse = "Lord Krishna is a major deity in Hinduism. He is worshipped as the eighth avatar of the god Vishnu and also as the supreme god in his own right.";
+            break;
+          case "what is the meaning of life?":
+            chatbotResponse = "The meaning of life is subjective and varies from person to person. However, according to Hindu philosophy, the ultimate goal of life is to achieve Moksha, which is liberation from the cycle of birth and death.";
+            break;
+          case "thank you":
+            chatbotResponse = "You're welcome!";
+            break;
+    // Add more cases here for other user inputs and responses
+    default:
+      chatbotResponse = "I'm sorry, I didn't understand your message. Please try again.";
+  }
+
+  // Create a new chatbot message element with the appropriate response and append it to the chatbot dialogue
+  const chatbotMessage = document.createElement("div");
+  chatbotMessage.classList.add("chatbot-message");
+  chatbotMessage.innerHTML = `<p>${chatbotResponse}</p>`;
+  chatbotDialogue.appendChild(chatbotMessage);
+}
+
+// Listen for the Enter keypress event on the input field
+const inputField = document.querySelector("input[type='text']");
+inputField.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    // Simulate a click on the Send button
+    const sendButton = document.querySelector("button");
+    sendButton.click();
+  }
+});
+
+    </script>
+  </body>
+</html>
+
